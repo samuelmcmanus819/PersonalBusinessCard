@@ -5,6 +5,8 @@ import work1 from "../assets/images/work_images/MyWebsite.png";
 // works small images
 import workSmall1 from "../assets/images/work_images/small/MyWebsiteSmall.png";
 
+
+
 import img1 from "../assets/images/slider/brand-1.png";
 
 //  icon use as img here
@@ -12,11 +14,18 @@ import icon from "../assets/images/icons/icon-1.svg";
 import icon1 from "../assets/images/icons/icon-2.svg";
 import icon4 from "../assets/images/icons/icon-5.svg";
 import icon5 from "../assets/images/icons/icon-6.svg";
-
-import { FaRegUser, } from "react-icons/fa";
+// contact image
+import iconPhone from "../assets/images/contact/phone-call 1.png";
+import iconEmail from "../assets/images/contact/email 1.png";
+import iconMap from "../assets/images/contact/map 1.png";
+import { CgNotes } from "react-icons/cg";
+import { FaBlogger, FaRegUser, FaAward } from "react-icons/fa";
+import { AiOutlineHome } from "react-icons/ai";
 import { FiCodesandbox } from "react-icons/fi";
 import { RiContactsBookLine } from "react-icons/ri";
 import { Link, useLocation } from "react-router-dom";
+
+import { MdOutlineBusinessCenter, MdOutlineSchool } from "react-icons/md";
 
 const AllData = () => {
   const [check, setCheck] = useState(false);
@@ -57,7 +66,7 @@ const AllData = () => {
       : document.documentElement.classList.remove("dark");
   };
 
-  // filter portfilo data
+  // fillter portfilo data
   const handleData = (text) => {
     if (text === "All") {
       setData(workItems);
@@ -130,9 +139,10 @@ const AllData = () => {
     },
   ];
 
+
   // Slider image for Clients
   const sliderImg = [
-    img1,
+    img1
   ];
 
   // experience items for about page

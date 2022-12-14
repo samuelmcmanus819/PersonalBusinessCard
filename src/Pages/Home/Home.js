@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { FiMoon, FiSun } from "react-icons/fi";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import UseData from "../../Hooks/UseData";
 import logo from "../../assets/images/logo/logo.png";
 import Header from "../../Share/Header";
@@ -10,10 +10,11 @@ import PageTitle from "../../Share/PageTitle";
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { handleTheme, check } = UseData();
+  const { handleTheme, check, menuItem, NavLink } = UseData();
   const handle = (e) => {
     handleTheme(e);
   };
+  const a = useLocation();
   return (
     <>
       <PageTitle title="Home"></PageTitle>
@@ -26,8 +27,9 @@ const Home = () => {
         >
           <div className="w-full flex justify-between  px-4">
             {/* website logo */}
+
             <Link to="/">
-              <img className="h-[75px] lg:h-[75px]" src={logo} alt="logo" />
+              <img className="h-[26px] lg:h-[32px]" src={logo} alt="logo" />
             </Link>
             <div className="flex items-center">
               {/* dark and light mode button */}
@@ -77,6 +79,27 @@ const Home = () => {
                 : "flex my-12 "
             }`}
           >
+            {menuItem.map((item) => (
+              <li onClick={() => setMenuOpen(false)} key={item.id}>
+                <NavLink
+                  key={item.id}
+                  activeClassName=" text-[#FA5252]  hover:text-[#FA5252] "
+                  inactiveClassName=" dark:text-white dark:hover:text-[#FA5252]  hover:text-[#FA5252]  "
+                  className={`${
+                    menuOpen ? " pl-4" : " mx-2.5 rounded-md "
+                  }    cursor-pointer  transition-colors duration-300 ease-in-out  font-poppins   text-gray-lite font-medium   flex text-xtiny py-2.5 md:px-4 xl:px-5 items-center  ${
+                    a.pathname === "/homeTwo" && item.id === "01"
+                      ? " dark:text-[#FA5252] text-[#FA5252]   "
+                      : ""
+                  }`}
+                  to={item?.link}
+                >
+                  <span className="mr-2 text-xl">{item?.icon}</span>{" "}
+                  {item?.name}
+                </NavLink>
+              </li>
+            ))}
+
             {/* mobile dark and light mode button */}
 
             {!check ? (
@@ -102,7 +125,7 @@ const Home = () => {
             <HomeCard />
           </div>
           <div className="col-span-12 lg:col-span-8  ">
-            {/* header  */}
+            {/* header two  */}
 
             <Header />
             <Outlet />

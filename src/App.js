@@ -7,7 +7,7 @@ import ContextProvider from "./Context/ContextProvider";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
 import Home from "./Pages/Home/Home";
-import Portfilo from "./Pages/Portfilo/Portfolio";
+import Portfilo from "./Pages/Portfilo/Portfilo";
 import NotFound from "./Share/NotFound";
 
 function App() {
